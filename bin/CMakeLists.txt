@@ -45,6 +45,13 @@ add_executable(http_client
     test_cert.c
 )
 
+add_executable(http_client_sslkeylog
+    http_client_sslkeylog.c
+    prog.c
+    test_common.c
+    test_cert.c
+)
+
 #MSVC
 ELSE()
 
@@ -55,9 +62,16 @@ add_executable(http_client
     test_cert.c
 )
 
+add_executable(http_client_sslkeylog
+    http_client_sslkeylog.c
+    prog.c
+    test_common.c
+    test_cert.c
+)
 ENDIF()
 
 TARGET_LINK_LIBRARIES(http_client ${LIBS})
+TARGET_LINK_LIBRARIES(http_client_sslkeylog ${LIBS})
 TARGET_LINK_LIBRARIES(http_server ${LIBS})
 IF(NOT MSVC)
 TARGET_LINK_LIBRARIES(md5_server  ${LIBS})

@@ -1,0 +1,7 @@
+In ./bin add http_client_sslkeylog.c to generate sskkeylogfile for wireshark analysis
+for example:
+
+[root@iv-yef8thzshs5i3z4zkzqk bin]#tcpdump -i lo udp port 4433 -s0 -G 300 -w /tmp/quic_%Y_%m%d_%H%M_%S.pcap
+[root@iv-yef8thzshs5i3z4zkzqk bin]# export SSLKEYLOGFILE=/tmp/quic_sslkey.log
+[root@iv-yef8thzshs5i3z4zkzqk bin]# ./http_client_sslkeylog -H www.example.com -s 127.0.0.1:4433 -p / -L info
+[root@iv-yef8thzshs5i3z4zkzqk bin]# ./http_server -c www.example.com,fullchain.pem,privkey.pem -s 0.0.0.0:4433 -L info
